@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 
 const Header: React.FC = () => {
   return (
-    <header className="text-center mb-8">
+    <header className="mb-8">
       <motion.h1 
         className="text-4xl md:text-5xl font-bold mb-6 text-white"
         initial={{ opacity: 0, y: -20 }}
@@ -13,7 +13,7 @@ const Header: React.FC = () => {
       </motion.h1>
       
       <motion.p 
-        className="text-base md:text-lg text-gray-300 max-w-3xl mx-auto px-4"
+        className="text-base md:text-lg text-gray-300 max-w-3xl"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.2 }}

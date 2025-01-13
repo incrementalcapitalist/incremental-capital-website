@@ -11,13 +11,13 @@ const Disclaimer: React.FC = () => {
       </Helmet>
 
       <motion.div 
-        className="max-w-3xl mx-auto px-4 py-8"
+        className="p-6 md:p-8 lg:p-12"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -20 }}
         transition={{ duration: 0.3 }}
       >
-        <header className="text-center mb-8">
+        <header className="mb-8">
           <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Disclaimer
           </h1>
@@ -26,7 +26,7 @@ const Disclaimer: React.FC = () => {
           </p>
         </header>
 
-        <div className="space-y-6 text-xs text-gray-300">
+        <div className="space-y-6 text-xs text-gray-300 max-w-4xl">
           <p>
             Neither Incremental Capital LLC nor any member, employee, contractor, or any person associated with it, 
             (collectively, Incremental Capital), is a registered investment advisor. Opinions, information and trade 
@@ -62,7 +62,7 @@ const Disclaimer: React.FC = () => {
         </div>
 
         <motion.div 
-          className="mt-12 text-center"
+          className="mt-12"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}

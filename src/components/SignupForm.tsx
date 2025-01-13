@@ -1,6 +1,12 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
+const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT
+
+if (!FORMSPREE_ENDPOINT) {
+  console.error('VITE_FORMSPREE_ENDPOINT is not set in environment variables')
+}
+
 const SignupForm: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [message, setMessage] = useState<{
@@ -10,6 +16,15 @@ const SignupForm: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    
+    if (!FORMSPREE_ENDPOINT) {
+      setMessage({ 
+        type: 'error', 
+        text: 'Form submission is not configured. Please contact the administrator.' 
+      })
+      return
+    }
+
     setIsSubmitting(true)
     setMessage({ type: null, text: '' })
 
@@ -17,7 +32,7 @@ const SignupForm: React.FC = () => {
     const email = new FormData(form).get('email')
 
     try {
-      const response = await fetch('https://formspree.io/f/xyzgzdwp', {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
         method: 'POST',
         body: JSON.stringify({ email }),
         headers: {
@@ -49,29 +64,27 @@ const SignupForm: React.FC = () => {
     <motion.form
       id="signup-form"
       onSubmit={handleSubmit}
-      className="flex flex-col md:flex-row gap-4 max-w-xl mx-auto"
+      className="flex flex-col md:flex-row gap-4 max-w-xl"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.3 }}
     >
-      <div className="flex-grow relative">
-        <input
-          type="email"
-          name="email"
-          placeholder="Your email"
-          required
-          disabled={isSubmitting}
-          className="w-full px-4 py-3 rounded-lg bg-transparent border-2 
-                   border-white/30 focus:border-primary outline-none
-                   text-white placeholder-white/50 transition-colors
-                   disabled:opacity-50"
-        />
-      </div>
+      <input
+        type="email"
+        name="email"
+        placeholder="Your email"
+        required
+        disabled={isSubmitting}
+        className="flex-grow px-4 py-3 rounded-lg bg-transparent 
+                 border-2 border-white/30 focus:border-primary 
+                 outline-none text-white placeholder-white/50 
+                 transition-colors disabled:opacity-50"
+      />
 
       <motion.button
         type="submit"
         disabled={isSubmitting}
-        className="px-6 py-3 bg-primary hover:bg-primary-light 
+        className="md:w-auto px-6 py-3 bg-primary hover:bg-primary-light 
                  text-white font-bold rounded-lg transition-colors
                  disabled:opacity-50 disabled:cursor-not-allowed"
         whileHover={{ scale: 1.02 }}
@@ -86,7 +99,7 @@ const SignupForm: React.FC = () => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className={`absolute left-0 right-0 -bottom-12 text-center
+            className={`absolute left-0 -bottom-12
                       ${message.type === 'success' ? 'text-green-400' : 'text-red-400'}`}
           >
             {message.text}

@@ -25,7 +25,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.3 }}
-          className="relative z-10 flex flex-col justify-center min-h-screen px-4 py-6 md:px-6 lg:px-8"
+          className="relative z-10 min-h-screen p-6 md:p-8 lg:p-12"
         >
           {children}
         </motion.main>

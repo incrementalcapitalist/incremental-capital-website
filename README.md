@@ -1,207 +1,243 @@
 # Incremental Capital LLC Website
 
-Official website for Incremental Capital LLC.
+Official website for Incremental Capital LLC, implementing a minimalist single-page application with robust security and maintainability.
 
-## Overview
+## System Requirements
 
-A React-based single-page application implementing Incremental Capital LLC's web presence. The site features a minimalist design, robust contact functionality, and comprehensive legal documentation.
+### Development Environment
+- Node.js (version 16 or higher)
+  - Required for modern JavaScript features and optimal build performance
+  - Recommended: Latest LTS version for stability
+- npm (version 7 or higher)
+  - Required for proper workspaces and dependency management
+  - Ensures consistent package installations across environments
+- Git (version 2.30 or higher)
+  - Required for version control and deployment processes
+  - Enables proper branch management and deployment tracking
+
+### Production Environment
+- NGINX (version 1.20 or higher)
+  - Handles static file serving and request routing
+  - Provides necessary security headers and SSL termination
+- SSL Certificate
+  - Required for HTTPS implementation
+  - Minimum 2048-bit key length recommended
+- Node.js (version 16 or higher)
+  - Required for production build process
+  - Ensures consistent build output
 
 ## Technical Stack
 
+Each technology in our stack serves a specific purpose:
+
+### Core Framework
 - React 18
+  - Provides concurrent rendering capabilities
+  - Enables strict mode for better development practices
+  - Implements efficient state management patterns
+
+### Type Safety
 - TypeScript 5
+  - Ensures type safety across the codebase
+  - Enables better IDE support and code navigation
+  - Facilitates early error detection
+
+### Build System
 - Vite
+  - Offers superior build performance
+  - Implements efficient hot module replacement
+  - Provides optimized production builds
+
+### Styling
 - Tailwind CSS
+  - Implements utility-first CSS architecture
+  - Enables responsive design patterns
+  - Ensures consistent styling across components
+
+### Animation
 - Framer Motion
+  - Handles page transitions
+  - Implements smooth UI animations
+  - Provides gesture support
+
+### Routing
 - React Router
+  - Manages client-side routing
+  - Implements route-based code splitting
+  - Handles navigation state management
+
+### Meta Tags
 - React Helmet Async
+  - Manages document head elements
+  - Implements SEO best practices
+  - Handles dynamic meta information
 
-## Development
+## Initial Setup
 
-### Prerequisites
+1. Repository Configuration
+```bash
+# Clone the repository
+git clone https://github.com/incrementalcapital/website.git
 
-- Node.js (version 16 or higher)
-- npm (version 7 or higher)
+# Navigate to project directory
+cd website
 
-### Getting Started
+# Set up Git hooks
+cp scripts/pre-commit.sample .git/hooks/pre-commit
+chmod +x .git/hooks/pre-commit
+```
 
+2. Environment Configuration
+```bash
+# Create environment files
+cp .env.example .env.development
+cp .env.example .env.production
+
+# Configure environment variables
+# Edit .env.development and .env.production with appropriate values
+```
+
+3. Development Dependencies
 ```bash
 # Install dependencies
 npm install
 
+# Verify installation
+npm run verify
+```
+
+## Development Workflow
+
+### Local Development
+```bash
 # Start development server
 npm run dev
+
+# Run type checking in watch mode
+npm run type-check:watch
 ```
 
-### Project Structure
+### Code Quality Tools
+```bash
+# Run linting
+npm run lint
 
-```
-src/
-├── components/      # Reusable UI components
-├── pages/          # Page components
-├── styles/         # Global styles
-├── App.tsx         # Root component
-└── main.tsx        # Entry point
+# Run type checking
+npm run type-check
 
-public/
-├── images/         # Static images
-└── favicon.ico     # Site favicon
+# Format code
+npm run format
 ```
 
-### Key Features
+## Project Structure
 
-- Responsive design implementation
-- Theme management system
-- Page transition animations
-- SEO optimization
-- Background image slideshow
-- Formspree contact integration
-- Social media connectivity
-
-### Server Requirements
-
-- Node.js runtime environment
-- SSL certificate
-- Proper CORS configuration
-- Adequate server resources
-
-## Configuration
-
-### Environmental Variables
-
-Create a `.env` file in the root directory:
-
-```env
-VITE_FORMSPREE_ENDPOINT=your-formspree-endpoint
+```
+├── public/                 # Static assets
+│   ├── images/            # Image assets
+│   └── favicon.ico        # Site favicon
+├── scripts/               # Build and deployment scripts
+│   ├── deploy.sh         # Production deployment script
+│   └── verify.sh         # Environment verification script
+├── src/                  # Source code
+│   ├── components/       # Reusable UI components
+│   ├── pages/           # Page components
+│   ├── styles/          # Global styles
+│   ├── utilities/       # Utility functions
+│   ├── App.tsx          # Root component
+│   └── main.tsx         # Entry point
+└── tests/               # Test files
 ```
 
-### Build Configuration
+## Build and Deployment
 
-Vite configuration options are specified in `vite.config.ts`.
+### Build Process
 
-## Build Process
+Our build process is managed by a comprehensive deployment script located at `scripts/deploy.sh`. This script handles:
 
 1. Environment Preparation
 ```bash
-# Clean existing build artifacts
-npm run clean
-
-# Clear node_modules
-rm -rf node_modules
-
-# Fresh dependency installation
-npm install
+# The script performs these steps automatically:
+npm run clean           # Clean existing build artifacts
+rm -rf node_modules     # Remove existing dependencies
+npm install            # Fresh dependency installation
 ```
 
-2. Production Build
+2. Build Verification
 ```bash
-# Create optimized production build
-npm run build
+# Automatic verification steps:
+npm run type-check     # Verify type safety
+npm run lint          # Check code quality
+npm run test          # Run test suite
 ```
 
-3. Build Verification
+3. Production Build
 ```bash
-# Local production build testing
-npm run preview
+# Final build steps:
+npm run build         # Create optimized build
+npm run preview       # Verify build locally
 ```
 
-4. Build Artifacts
-- Location: `dist/` directory
-- Contents:
-  - Optimized JavaScript bundles
-  - Processed CSS files
-  - Static assets
-  - HTML entry point
+### Deployment Script
+
+The deployment script (`scripts/deploy.sh`) is a comprehensive tool that manages the entire deployment process. Key features:
+
+- Error handling and logging
+- Environment validation
+- Build artifact verification
+- Automatic rollback on failure
+- Performance optimization checks
+
+Usage:
+```bash
+# Make script executable
+chmod +x scripts/deploy.sh
+
+# Run deployment
+./scripts/deploy.sh
+```
+
+For detailed script documentation, see [DEPLOYMENT.md](./DEPLOYMENT.md).
 
 ## Monitoring
 
 ### Performance Metrics
-
-Monitor and track:
-- Page load times
-- Time to interactive
-- First contentful paint
-- Largest contentful paint
-- Cumulative layout shift
+Monitor and track key performance indicators:
+- Core Web Vitals
+  - Largest Contentful Paint (LCP): < 2.5s
+  - First Input Delay (FID): < 100ms
+  - Cumulative Layout Shift (CLS): < 0.1
+- Custom Metrics
+  - Time to Interactive (TTI)
+  - First Contentful Paint (FCP)
+  - DNS resolution time
+  - SSL negotiation time
 
 ### Error Tracking
-
-Track and log:
-- JavaScript runtime errors
-- API communication failures
-- Form submission errors
-- Asset loading failures
-
-### Analytics
-
-Monitor:
-- User engagement metrics
-- Form submission rates
-- Page navigation patterns
-- Resource utilization
-- Server response times
-
-## Maintenance
-
-### Regular Tasks
-
-1. Dependencies
-- Weekly dependency audits
-- Monthly dependency updates
-- Quarterly major version evaluations
-
-2. Security
-- Weekly security scans
-- Monthly vulnerability assessments
-- Regular SSL certificate renewal
-
-3. Performance
-- Weekly performance metric review
-- Monthly optimization assessment
-- Quarterly full performance audit
-
-4. Content
-- Regular content freshness checks
-- Link validation
-- Meta tag verification
-- SEO optimization review
-
-### Update Procedure
-
-1. Development Updates
-```bash
-# Create update branch
-git checkout -b update/description
-
-# Install and update dependencies
-npm update
-
-# Test updates
-npm run test
-
-# Build and verify
-npm run build
-npm run preview
-```
-
-2. Production Updates
-```bash
-# Merge approved updates
-git checkout main
-git merge update/description
-
-# Deploy updates
-./scripts/deploy.sh
-```
+Implementation of comprehensive error logging:
+- Runtime Errors
+  - JavaScript exceptions
+  - Network failures
+  - Resource loading errors
+- User Experience Issues
+  - Form submission failures
+  - Navigation errors
+  - Asset loading failures
 
 ## Security
 
-Security vulnerabilities should be reported to info@incremental.capital.
+Security measures implemented:
+- Content Security Policy (CSP)
+- HTTP Strict Transport Security (HSTS)
+- XSS Protection Headers
+- CSRF Protection
+- Rate Limiting
+
+Report security issues to: security@incremental.capital
 
 ## Legal
 
-Copyright © Incremental Capital LLC. All rights reserved.
+Copyright © 2024 Incremental Capital LLC. All rights reserved.
 
-## Contact
+## Support
 
-For technical inquiries regarding this website, contact through appropriate channels listed on the website.
+For technical support: info@incremental.capital

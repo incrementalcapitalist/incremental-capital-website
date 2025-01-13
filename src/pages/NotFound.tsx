@@ -10,8 +10,8 @@ const NotFound: React.FC = () => {
         <meta name="description" content="The page you're looking for cannot be found." />
       </Helmet>
 
-      <div className="min-h-screen flex items-center justify-center px-4">
-        <div className="text-center">
+      <div className="p-6 md:p-8 lg:p-12">
+        <div className="max-w-4xl">
           <motion.h1 
             className="text-8xl font-bold text-primary mb-4"
             animate={{ 
@@ -36,7 +36,7 @@ const NotFound: React.FC = () => {
               Oops! Page not found
             </h2>
 
-            <p className="text-gray-400 mb-8 max-w-md mx-auto">
+            <p className="text-gray-400 mb-8 max-w-md">
               The page you're looking for doesn't exist or has been moved. 
               Let's get you back to where you need to be.
             </p>

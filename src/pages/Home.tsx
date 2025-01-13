@@ -20,13 +20,11 @@ const Home: React.FC = () => {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.3 }}
-        className="min-h-screen flex flex-col justify-center px-4 md:px-8"
+        className="min-h-screen flex flex-col"
       >
-        <div className="flex-grow flex flex-col justify-center max-w-4xl mx-auto w-full">
-          <div className="py-12">
-            <Header />
-            <SignupForm />
-          </div>
+        <div className="flex-grow flex flex-col justify-center max-w-4xl">
+          <Header />
+          <SignupForm />
         </div>
 
         <Footer />

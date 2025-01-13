@@ -1,14 +1,14 @@
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { motion } from 'framer-motion'
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 import { 
   faTwitter,
   faInstagram,
   faGithub,
   faYoutube
 } from '@fortawesome/free-brands-svg-icons'
-import { motion } from 'framer-motion'
-import { IconDefinition } from '@fortawesome/fontawesome-svg-core'
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 
 interface SocialLink {
   href: string
@@ -46,8 +46,7 @@ const Footer: React.FC = () => {
   ]
 
   return (
-    <footer className="fixed bottom-4 left-4 text-gray-400 transition-opacity 
-                     duration-500 hover:opacity-100 opacity-50 z-10">
+    <footer className="relative p-6 md:p-8 lg:p-12 text-gray-400 z-10">
       <motion.ul 
         className="flex gap-4 mb-2"
         initial={{ opacity: 0, y: 20 }}
@@ -65,7 +64,7 @@ const Footer: React.FC = () => {
             >
               <FontAwesomeIcon 
                 icon={link.icon} 
-                className="text-xl" 
+                className="text-xl opacity-50 hover:opacity-100 transition-opacity duration-200" 
               />
               <span className="sr-only">{link.label}</span>
             </a>
@@ -73,24 +72,21 @@ const Footer: React.FC = () => {
         ))}
       </motion.ul>
 
-      <motion.ul 
-        className="flex text-sm gap-3"
+      <motion.div 
+        className="flex text-sm gap-3 items-center opacity-50 hover:opacity-100 transition-opacity duration-200"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.5 }}
       >
-        <li>
-          &copy; {new Date().getFullYear()} Incremental Capital LLC
-        </li>
-        <li className="before:content-['•'] before:mr-3">
-          <Link 
-            to="/disclaimer"
-            className="hover:text-primary transition-colors duration-200"
-          >
-            Disclaimer
-          </Link>
-        </li>
-      </motion.ul>
+        <span>&copy; {new Date().getFullYear()} Incremental Capital LLC</span>
+        <span className="text-gray-600">•</span>
+        <Link 
+          to="/disclaimer"
+          className="hover:text-primary transition-colors duration-200"
+        >
+          Disclaimer
+        </Link>
+      </motion.div>
     </footer>
   )
 }
