@@ -31,12 +31,6 @@ npm install
 
 # Start development server
 npm run dev
-
-# Build for production
-npm run build
-
-# Preview production build
-npm run preview
 ```
 
 ### Project Structure
@@ -64,21 +58,6 @@ public/
 - Formspree contact integration
 - Social media connectivity
 
-## Production Deployment
-
-### Build Process
-
-1. Ensure all dependencies are installed
-2. Run production build
-3. Verify build output
-4. Deploy to production server
-
-```bash
-npm install
-npm run build
-npm run preview
-```
-
 ### Server Requirements
 
 - Node.js runtime environment
@@ -100,29 +79,124 @@ VITE_FORMSPREE_ENDPOINT=your-formspree-endpoint
 
 Vite configuration options are specified in `vite.config.ts`.
 
+## Build Process
+
+1. Environment Preparation
+```bash
+# Clean existing build artifacts
+npm run clean
+
+# Clear node_modules
+rm -rf node_modules
+
+# Fresh dependency installation
+npm install
+```
+
+2. Production Build
+```bash
+# Create optimized production build
+npm run build
+```
+
+3. Build Verification
+```bash
+# Local production build testing
+npm run preview
+```
+
+4. Build Artifacts
+- Location: `dist/` directory
+- Contents:
+  - Optimized JavaScript bundles
+  - Processed CSS files
+  - Static assets
+  - HTML entry point
+
+## Monitoring
+
+### Performance Metrics
+
+Monitor and track:
+- Page load times
+- Time to interactive
+- First contentful paint
+- Largest contentful paint
+- Cumulative layout shift
+
+### Error Tracking
+
+Track and log:
+- JavaScript runtime errors
+- API communication failures
+- Form submission errors
+- Asset loading failures
+
+### Analytics
+
+Monitor:
+- User engagement metrics
+- Form submission rates
+- Page navigation patterns
+- Resource utilization
+- Server response times
+
 ## Maintenance
 
-### Updates
+### Regular Tasks
 
-Regular maintenance tasks:
+1. Dependencies
+- Weekly dependency audits
+- Monthly dependency updates
+- Quarterly major version evaluations
 
-1. Dependency updates
-2. Security patches
-3. Content updates
-4. Performance optimization
+2. Security
+- Weekly security scans
+- Monthly vulnerability assessments
+- Regular SSL certificate renewal
 
-### Monitoring
+3. Performance
+- Weekly performance metric review
+- Monthly optimization assessment
+- Quarterly full performance audit
 
-Monitor for:
+4. Content
+- Regular content freshness checks
+- Link validation
+- Meta tag verification
+- SEO optimization review
 
-- Server performance
-- Error rates
-- Form submission functionality
-- SEO metrics
+### Update Procedure
+
+1. Development Updates
+```bash
+# Create update branch
+git checkout -b update/description
+
+# Install and update dependencies
+npm update
+
+# Test updates
+npm run test
+
+# Build and verify
+npm run build
+npm run preview
+```
+
+2. Production Updates
+```bash
+# Merge approved updates
+git checkout main
+git merge update/description
+
+# Deploy updates
+./scripts/deploy.sh
+```
 
 ## Security
 
-Security vulnerabilities should be reported directly to security@incremental.capital.
+Security vulnerabilities should be reported to info@incremental.capital.
 
 ## Legal
 
