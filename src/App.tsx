@@ -1,4 +1,3 @@
-import { HelmetProvider } from 'react-helmet-async'
 import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider } from './components/ThemeProvider'
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -12,15 +11,13 @@ library.add(fab, faEnvelope)
 
 function App() {
   return (
-    <HelmetProvider>
-      <ThemeProvider>
-        <BrowserRouter>
-          <Layout>
-            <AnimatedRoutes />
-          </Layout>
-        </BrowserRouter>
-      </ThemeProvider>
-    </HelmetProvider>
+    <ThemeProvider>
+      <BrowserRouter>
+        <Layout>
+          <AnimatedRoutes />
+        </Layout>
+      </BrowserRouter>
+    </ThemeProvider>
   )
 }
 
