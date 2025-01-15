@@ -53,7 +53,7 @@ const NotFound: React.FC = () => {
             </Link>
 
             <a 
-              href="mailto:contact@incremental.capital"
+              href="mailto:info@incremental.capital"
               className="inline-block px-6 py-3 border border-primary/30 
                        text-primary rounded-lg hover:bg-primary/10 
                        transition-colors duration-200"
