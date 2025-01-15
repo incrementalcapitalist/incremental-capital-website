@@ -46,47 +46,49 @@ const Footer: React.FC = () => {
   ]
 
   return (
-    <footer className="relative p-6 md:p-8 lg:p-12 text-gray-400 z-10">
-      <motion.ul 
-        className="flex gap-4 mb-2"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.4 }}
-      >
-        {socialLinks.map((link) => (
-          <li key={link.label}>
-            <a
-              href={link.href}
-              target={link.href.startsWith('http') ? '_blank' : undefined}
-              rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-              className="text-inherit hover:text-primary transition-colors duration-200"
-              aria-label={link.label}
-            >
-              <FontAwesomeIcon 
-                icon={link.icon} 
-                className="text-xl opacity-50 hover:opacity-100 transition-opacity duration-200" 
-              />
-              <span className="sr-only">{link.label}</span>
-            </a>
-          </li>
-        ))}
-      </motion.ul>
-
-      <motion.div 
-        className="flex text-sm gap-3 items-center opacity-50 hover:opacity-100 transition-opacity duration-200"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.5 }}
-      >
-        <span>&copy; {new Date().getFullYear()} Incremental Capital LLC</span>
-        <span className="text-gray-600">•</span>
-        <Link 
-          to="/disclaimer"
-          className="hover:text-primary transition-colors duration-200"
+    <footer className="mt-auto w-full">
+      <div className="max-w-4xl">
+        <motion.ul 
+          className="flex gap-4 mb-2"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
         >
-          Disclaimer
-        </Link>
-      </motion.div>
+          {socialLinks.map((link) => (
+            <li key={link.label}>
+              <a
+                href={link.href}
+                target={link.href.startsWith('http') ? '_blank' : undefined}
+                rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                className="text-inherit hover:text-primary transition-colors duration-200"
+                aria-label={link.label}
+              >
+                <FontAwesomeIcon 
+                  icon={link.icon} 
+                  className="text-xl opacity-50 hover:opacity-100 transition-opacity duration-200" 
+                />
+                <span className="sr-only">{link.label}</span>
+              </a>
+            </li>
+          ))}
+        </motion.ul>
+
+        <motion.div 
+          className="flex items-center gap-3 opacity-50 hover:opacity-100 transition-opacity duration-200"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+        >
+          <span className="text-sm text-gray-400">&copy; {new Date().getFullYear()} Incremental Capital LLC</span>
+          <span className="text-sm text-gray-600">•</span>
+          <Link 
+            to="/disclaimer"
+            className="text-sm text-gray-400 hover:text-primary transition-colors duration-200"
+          >
+            Disclaimer
+          </Link>
+        </motion.div>
+      </div>
     </footer>
   )
 }
