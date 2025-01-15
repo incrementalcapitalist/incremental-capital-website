@@ -12,17 +12,17 @@ const Disclaimer: React.FC = () => {
 
       {/* Match the height and flex structure of our Home page */}
       <div className="h-full flex flex-col">
-        <div className="flex-1 max-w-4xl">
+        <div className="max-w-4xl">
           <header className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            <h1 className="font-display text-display-medium text-white mb-4">
               Disclaimer
             </h1>
-            <p className="text-xs text-gray-300">
+            <p className="text-body text-text-primary">
               This website is not a solicitation. Incremental Capital LLC does not solicit funds for investment or trading.
             </p>
           </header>
 
-          <div className="space-y-6 text-xs text-gray-300">
+          <div className="space-y-6 text-body text-text-primary">
             <p>
               Neither Incremental Capital LLC nor any member, employee, contractor, or any person associated with it, 
               (collectively, Incremental Capital), is a registered investment advisor. Opinions, information and trade 
@@ -50,7 +50,7 @@ const Disclaimer: React.FC = () => {
               website is linked.
             </p>
 
-            <p className="font-bold text-white">
+            <p className="font-display font-semibold text-white">
               IF YOU DO NOT AGREE WITH THE TERMS OF THIS DISCLAIMER, PLEASE EXIT THIS SITE IMMEDIATELY. 
               PLEASE BE ADVISED THAT YOUR CONTINUED USE OF THIS SITE OR THE INFORMATION PROVIDED HEREIN 
               SHALL INDICATE YOUR CONSENT AND AGREEMENT TO THESE TERMS.
@@ -66,7 +66,7 @@ const Disclaimer: React.FC = () => {
             <Link
               to="/"
               className="inline-block px-6 py-3 text-primary border border-primary/30 
-                       rounded-lg hover:bg-primary/10 transition-colors duration-200"
+                      rounded-lg hover:bg-primary/10 transition-colors duration-200"
             >
               Back to Home
             </Link>
