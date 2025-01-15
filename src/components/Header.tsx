@@ -37,7 +37,7 @@ const Header: React.FC = () => {
         >
           Incremental Capitalist 
         </a>
-         newsletter.
+        {' '}newsletter.
       </motion.p>
     </header>
   )
