@@ -12,16 +12,19 @@ const Disclaimer: React.FC = () => {
 
       {/* Match the height and flex structure of our Home page */}
       <div className="h-full flex flex-col">
-        <div className="max-w-4xl">
+        <div className="flex-1 max-w-4xl">
           <header className="mb-8">
+            {/* Use font-display for headings and match landing page size */}
             <h1 className="font-display text-display-medium text-white mb-4">
               Disclaimer
             </h1>
+            {/* Use body size instead of text-xs for better readability */}
             <p className="text-body text-text-primary">
               This website is not a solicitation. Incremental Capital LLC does not solicit funds for investment or trading.
             </p>
           </header>
 
+          {/* Use standard body text size instead of text-xs */}
           <div className="space-y-6 text-body text-text-primary">
             <p>
               Neither Incremental Capital LLC nor any member, employee, contractor, or any person associated with it, 
@@ -50,6 +53,7 @@ const Disclaimer: React.FC = () => {
               website is linked.
             </p>
 
+            {/* The emphasis text should use the display font while maintaining size */}
             <p className="font-display font-semibold text-white">
               IF YOU DO NOT AGREE WITH THE TERMS OF THIS DISCLAIMER, PLEASE EXIT THIS SITE IMMEDIATELY. 
               PLEASE BE ADVISED THAT YOUR CONTINUED USE OF THIS SITE OR THE INFORMATION PROVIDED HEREIN 
@@ -66,7 +70,8 @@ const Disclaimer: React.FC = () => {
             <Link
               to="/"
               className="inline-block px-6 py-3 text-primary border border-primary/30 
-                      rounded-lg hover:bg-primary/10 transition-colors duration-200"
+                       rounded-lg hover:bg-primary/10 transition-colors duration-200
+                       font-sans text-body font-medium"
             >
               Back to Home
             </Link>
