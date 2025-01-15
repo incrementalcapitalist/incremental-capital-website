@@ -35,9 +35,9 @@ const Header: React.FC = () => {
           rel="noopener noreferrer"
           className="text-primary hover:text-primary-light transition-colors duration-200 underline"
         >
-          newsletter
+          Incremental Capitalist 
         </a>
-        .
+        newsletter.
       </motion.p>
     </header>
   )
