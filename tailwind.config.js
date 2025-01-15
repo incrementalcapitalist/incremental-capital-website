@@ -8,9 +8,19 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        // Switch to Poppins as the default font
-        // We keep system-ui and sans-serif as fallbacks for better loading experience
-        sans: ['Poppins', 'Inter', 'system-ui', 'sans-serif'],
+        // Using both Poppins and Inter strategically
+        display: ['Poppins', 'system-ui', 'sans-serif'], // For headings
+        sans: ['Inter', 'system-ui', 'sans-serif'],      // For body text
+      },
+      fontSize: {
+        // Standardized text sizes
+        'display-large': ['3.25rem', { lineHeight: '1.25', letterSpacing: '-0.02em' }],    // 52px - Main title
+        'display-medium': ['2.5rem', { lineHeight: '1.25', letterSpacing: '-0.02em' }],    // 40px - Page headers
+        'heading': ['1.5rem', { lineHeight: '1.5', letterSpacing: '-0.01em' }],            // 24px - Section headers
+        'body-large': ['1.125rem', { lineHeight: '1.65', letterSpacing: '-0.01em' }],      // 18px - Main content
+        'body': ['1rem', { lineHeight: '1.65', letterSpacing: '0' }],                      // 16px - Regular text
+        'small': ['0.875rem', { lineHeight: '1.5', letterSpacing: '0' }],                  // 14px - Secondary text
+        'tiny': ['0.75rem', { lineHeight: '1.5', letterSpacing: '0' }],                    // 12px - Fine print
       },
       colors: {
         primary: {
