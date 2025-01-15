@@ -17,8 +17,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   }, [])
 
   return (
-    // The outermost container must be h-screen to constrain everything to viewport
-    <div className="h-screen bg-background overflow-hidden">
+    // Use min-h-screen to allow content to expand beyond viewport when needed
+    <div className="min-h-screen bg-background flex flex-col overflow-y-auto">
       <BackgroundSlideshow />
       <AnimatePresence mode="wait">
         <motion.main
@@ -26,16 +26,16 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.3 }}
-          // Use h-full to ensure the main element takes full height of parent
-          className="relative z-10 h-full p-6 md:p-8 lg:p-12"
+          // Use flex-grow to allow the main content to expand while maintaining footer position
+          className="relative z-10 flex flex-col flex-grow p-6 md:p-8 lg:p-12"
         >
-          {/* Wrap children in a flex container to ensure proper spacing */}
-          <div className="h-full flex flex-col">
-            {/* Content area */}
-            <div className="flex-1">
+          {/* Remove h-full to prevent content from being constrained to viewport height */}
+          <div className="flex flex-col flex-grow">
+            {/* Allow content to grow naturally without forcing it to fill space */}
+            <div className="flex-grow">
               {children}
             </div>
-            {/* Footer is now part of every page */}
+            {/* Footer will now stay at the bottom and scroll with content when needed */}
             <Footer />
           </div>
         </motion.main>

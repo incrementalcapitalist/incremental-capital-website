@@ -10,9 +10,10 @@ const Disclaimer: React.FC = () => {
         <meta name="description" content="Legal disclaimer and terms of use for Incremental Capital LLC." />
       </Helmet>
 
-      {/* Match the height and flex structure of our Home page */}
-      <div className="h-full flex flex-col">
-        <div className="flex-1 max-w-4xl">
+      {/* Remove the h-full class to allow content to expand naturally */}
+      <div className="flex flex-col min-h-full">
+        {/* Remove flex-1 as it can cause issues with scrolling */}
+        <div className="max-w-4xl">
           <header className="mb-8">
             {/* Use font-display for headings and match landing page size */}
             <h1 className="font-display text-display-medium text-white mb-4">
@@ -61,8 +62,9 @@ const Disclaimer: React.FC = () => {
             </p>
           </div>
 
+          {/* Added margin bottom for spacing above footer */}
           <motion.div 
-            className="mt-12"
+            className="mt-12 mb-16"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}

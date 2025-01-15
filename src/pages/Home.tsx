@@ -13,10 +13,14 @@ const Home: React.FC = () => {
         />
       </Helmet>
 
-      {/* The content area is simplified since Layout handles structure */}
-      <div className="max-w-4xl">
-        <Header />
-        <SignupForm />
+      {/* Use flex-grow instead of flex-1 to allow content to expand */}
+      <div className="flex flex-col flex-grow">
+        {/* Main content area */}
+        <div className="flex-grow max-w-4xl">
+          <Header />
+          <SignupForm />
+        </div>
+        {/* Remove the Footer from here since it's now handled by Layout */}
       </div>
     </>
   )
