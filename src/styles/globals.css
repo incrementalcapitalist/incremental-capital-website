@@ -3,21 +3,41 @@
 @tailwind utilities;
 
 @layer base {
-  body {
-    @apply bg-background text-gray-300;
+  html {
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
-  
+
+  body {
+    @apply bg-background text-text-primary font-sans;
+  }
+
+  /* Heading styles */
   h1, h2, h3, h4, h5, h6 {
-    @apply text-white font-bold;
+    @apply text-white font-semibold;
+  }
+
+  /* Link styles */
+  a {
+    @apply text-primary hover:text-primary-light transition-colors duration-200;
+  }
+
+  /* Footer text style standardization */
+  footer {
+    @apply text-text-secondary;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-light transition-colors duration-200;
+    @apply px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-light 
+           transition-colors duration-200 font-medium;
   }
   
   .btn-outline {
-    @apply px-6 py-3 border border-primary/30 text-primary rounded-lg hover:bg-primary/10 transition-colors duration-200;
+    @apply px-6 py-3 border border-primary/30 text-primary rounded-lg 
+           hover:bg-primary/10 transition-colors duration-200 font-medium;
   }
 }
