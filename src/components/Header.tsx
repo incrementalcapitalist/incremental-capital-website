@@ -28,8 +28,9 @@ const Header: React.FC = () => {
         >
           reach out
         </a>
-        {' '}or signup for the{' '}
-        <a
+        {/* START_NEWSLETTER_SECTION - Remove comments after Feb 26, 2025 */}
+        {/* {' '}or signup for the{' '}
+        
           href="https://incrementalcapital.substack.com/"
           target="_blank"
           rel="noopener noreferrer"
@@ -37,7 +38,8 @@ const Header: React.FC = () => {
         >
           Incremental Capitalist 
         </a>
-        {' '}newsletter.
+        {' '}newsletter */}
+        .
       </motion.p>
     </header>
   )
